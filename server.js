@@ -1,8 +1,8 @@
-// Importar las dependencias
+
 const express = require('express');
 const bodyParser = require('body-parser');
 
-// Inicializar la aplicación de Express
+
 const app = express();
 
 // Middleware para analizar cuerpos de solicitudes en formato JSON
@@ -10,41 +10,41 @@ app.use(bodyParser.json());
 
 // Simulación de un listado de productos
 const products = [
-    { id: 1, name: 'Televisor LED 4K', category: 'Electrónica', price: 400 },
-    { id: 2, name: 'Smartphone de última generación', category: 'Electrónica', price: 800 },
-    { id: 3, name: 'Portátil para gaming', category: 'Informática', price: 1200 },
-    { id: 4, name: 'Tablet con pantalla táctil', category: 'Electrónica', price: 300 },
-    { id: 5, name: 'Cámara fotográfica digital', category: 'Electrónica', price: 600 },
-    { id: 6, name: 'Auriculares inalámbricos', category: 'Accesorios', price: 150 },
-    { id: 7, name: 'Reloj inteligente (Smartwatch)', category: 'Accesorios', price: 250 },
-    { id: 8, name: 'Consola de videojuegos', category: 'Videojuegos', price: 500 },
-    { id: 9, name: 'Barra de sonido', category: 'Electrónica', price: 200 },
-    { id: 10, name: 'Altavoces Bluetooth', category: 'Accesorios', price: 100 },
-    { id: 11, name: 'Lavadora automática', category: 'Electrodomésticos', price: 700 },
-    { id: 12, name: 'Refrigerador con congelador', category: 'Electrodomésticos', price: 1000 },
-    { id: 13, name: 'Microondas con grill', category: 'Electrodomésticos', price: 150 },
-    { id: 14, name: 'Cafetera de cápsulas', category: 'Electrodomésticos', price: 120 },
-    { id: 15, name: 'Horno eléctrico', category: 'Electrodomésticos', price: 250 },
-    { id: 16, name: 'Aspiradora sin bolsa', category: 'Electrodomésticos', price: 180 },
-    { id: 17, name: 'Plancha de vapor', category: 'Electrodomésticos', price: 50 },
-    { id: 18, name: 'Ventilador de torre', category: 'Electrodomésticos', price: 80 },
-    { id: 19, name: 'Zapatos deportivos', category: 'Moda', price: 100 },
-    { id: 20, name: 'Zapatillas de running', category: 'Moda', price: 120 },
-    { id: 21, name: 'Camiseta de algodón', category: 'Moda', price: 25 },
-    { id: 22, name: 'Pantalón vaquero (Jeans)', category: 'Moda', price: 60 },
-    { id: 23, name: 'Sudadera con capucha', category: 'Moda', price: 45 },
-    { id: 24, name: 'Chaqueta impermeable', category: 'Moda', price: 85 },
-    { id: 25, name: 'Mochila escolar', category: 'Accesorios', price: 70 },
-    { id: 26, name: 'Bolso de mano', category: 'Accesorios', price: 90 },
-    { id: 27, name: 'Perfume de marca', category: 'Belleza', price: 60 },
-    { id: 28, name: 'Gafas de sol', category: 'Accesorios', price: 110 },
-    { id: 29, name: 'Collar de plata', category: 'Joyería', price: 150 },
-    { id: 30, name: 'Ropa interior cómoda', category: 'Moda', price: 20 }
+    { id: 1, nombre: 'Televisor LED 4K', categoria: 'Electrónica', precio: 400, activo: true },
+    { id: 2, nombre: 'Smartphone de última generación', categoria: 'Electrónica', precio: 800, activo: true },
+    { id: 3, nombre: 'Portátil para gaming', categoria: 'Informática', precio: 1200, activo: true },
+    { id: 4, nombre: 'Tablet con pantalla táctil', categoria: 'Electrónica', precio: 300, activo: false },
+    { id: 5, nombre: 'Cámara fotográfica digital', categoria: 'Electrónica', precio: 600, activo: false },
+    { id: 6, nombre: 'Auriculares inalámbricos', categoria: 'Accesorios', precio: 150, activo: false },
+    { id: 7, nombre: 'Reloj inteligente (Smartwatch)', categoria: 'Accesorios', precio: 250, activo: false },
+    { id: 8, nombre: 'Consola de videojuegos', categoria: 'Videojuegos', precio: 500, activo: false },
+    { id: 9, nombre: 'Barra de sonido', categoria: 'Electrónica', precio: 200, activo: true },
+    { id: 10, nombre: 'Altavoces Bluetooth', categoria: 'Accesorios', precio: 100, activo: false },
+    { id: 11, nombre: 'Lavadora automática', categoria: 'Electrodomésticos', precio: 700, activo: false },
+    { id: 12, nombre: 'Refrigerador con congelador', categoria: 'Electrodomésticos', precio: 1000, activo: true },
+    { id: 13, nombre: 'Microondas con grill', categoria: 'Electrodomésticos', precio: 150, activo: true },
+    { id: 14, nombre: 'Cafetera de cápsulas', categoria: 'Electrodomésticos', precio: 120, activo: true },
+    { id: 15, nombre: 'Horno eléctrico', categoria: 'Electrodomésticos', precio: 250, activo: true },
+    { id: 16, nombre: 'Aspiradora sin bolsa', categoria: 'Electrodomésticos', precio: 180, activo: true },
+    { id: 17, nombre: 'Plancha de vapor', categoria: 'Electrodomésticos', precio: 50, activo: true },
+    { id: 18, nombre: 'Ventilador de torre', categoria: 'Electrodomésticos', precio: 80, activo: true },
+    { id: 19, nombre: 'Zapatos deportivos', categoria: 'Moda', precio: 100, activo: true },
+    { id: 20, nombre: 'Zapatillas de running', categoria: 'Moda', precio: 120, activo: true },
+    { id: 21, nombre: 'Camiseta de algodón', categoria: 'Moda', precio: 25, activo: true },
+    { id: 22, nombre: 'Pantalón vaquero (Jeans)', categoria: 'Moda', precio: 60, activo: true },
+    { id: 23, nombre: 'Sudadera con capucha', categoria: 'Moda', precio: 45, activo: false },
+    { id: 24, nombre: 'Chaqueta impermeable', categoria: 'Moda', precio: 85, activo: false },
+    { id: 25, nombre: 'Mochila escolar', categoria: 'Accesorios', precio: 70, activo: false },
+    { id: 26, nombre: 'Bolso de mano', categoria: 'Accesorios', precio: 90, activo: true },
+    { id: 27, nombre: 'Perfume de marca', categoria: 'Belleza', precio: 60, activo: true },
+    { id: 28, nombre: 'Gafas de sol', categoria: 'Accesorios', precio: 110, activo: true },
+    { id: 29, nombre: 'Collar de plata', categoria: 'Joyería', precio: 150, activo: true },
+    { id: 30, nombre: 'Ropa interior cómoda', categoria: 'Moda', precio: 20, activo: true }
 ];
 
 // Ruta POST que retorna productos filtrados
 app.post('/api/products', (req, res) => {
-    const filters = req.body; // Los filtros se reciben en el cuerpo de la solicitud
+    const filters = req.body; 
 
     // Si no hay filtros, devolvemos todos los productos
     if (Object.keys(filters).length === 0) {
@@ -55,24 +55,29 @@ app.post('/api/products', (req, res) => {
     let filteredProducts = products;
 
     // Filtrar por categoría si se proporciona
-    if (filters.category) {
-        filteredProducts = filteredProducts.filter(product => product.category === filters.category);
+    if (filters.categoria) {
+        filteredProducts = filteredProducts.filter(product => product.categoria === filters.categoria);
     }
 
     // Filtrar por precio mínimo y máximo si se proporcionan
-    if (filters.minPrice) {
-        filteredProducts = filteredProducts.filter(product => product.price >= filters.minPrice);
+    if (filters.minprecio) {
+        filteredProducts = filteredProducts.filter(product => product.precio >= filters.minprecio);
     }
 
-    if (filters.maxPrice) {
-        filteredProducts = filteredProducts.filter(product => product.price <= filters.maxPrice);
+    if (filters.maxprecio) {
+        filteredProducts = filteredProducts.filter(product => product.precio <= filters.maxprecio);
+    }
+
+    // Filtrar por "activo" si se proporciona
+    if (filters.activo !== undefined) {
+        filteredProducts = filteredProducts.filter(product => product.activo === filters.activo);
     }
 
     // Devolver la lista de productos filtrados
     res.json(filteredProducts);
 });
 
-// Iniciar el servidor en el puerto 3000
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en el puerto ${PORT}`);
